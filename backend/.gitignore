@@ -1,0 +1,22 @@
+#ESTOS SON DATOS REFERENCIALES PARA EJEMPLO. SE DEBEN REEMPLAZAR POR LOS DATOS REALES DE EL PROYECTO.
+# Variables de entorno (Datos sensibles)
+.env
+.env.local
+.env.*.local
+
+# Dependencias (Muy pesadas, se instalan con npm install)
+node_modules/
+
+# Archivos de compilación y producción
+dist/
+build/
+
+# Registros y caché
+*.log
+npm-debug.log*
+.cache/
+
+# Archivos del sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
