@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Estilos del Módulo de Registro (Wizard de 6 Pasos)
+   ========================================================================== */
+
+.barra-pasos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 24px;
+  background: var(--bg-secundario);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--borde-suave);
+}
+
+.indicador-paso {
+  text-align: center;
+  padding: 8px 6px;
+  font-size: 0.85rem;
+  border-bottom: 3px solid transparent;
+  color: var(--texto-suave);
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.indicador-paso.activo {
+  background: var(--bg-principal);
+  border-bottom-color: var(--color-primario);
+  color: var(--color-primario);
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(15, 59, 95, 0.06);
+}
+
+.acciones-wizard {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde-suave);
+}

@@ -1,6 +1,12 @@
 // src/js/services/api.js
 
-const URL_V1 = import.meta.env.VITE_API_URL;
+//const URL_V1 = import.meta.env.VITE_API_URL;
+const esLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+const URL_V1 = esLocal
+  ? import.meta.env.VITE_API_URL
+  : (import.meta.env.VITE_API_TUNNEL_URL || import.meta.env.VITE_API_URL);
+
+
 
 /**
  * Envía el paquete JSON consolidado de las 6 tablas hacia FastAPI
@@ -83,6 +89,24 @@ export async function eliminarRegistro(endpoint) {
 
   if (!response.ok) {
     throw new Error(`Error al eliminar (HTTP ${response.status})`);
+  }
+
+  return await response.json();
+}
+
+
+export async function consultarPost(endpoint, payload) {
+  const response = await fetch(`${URL_V1}${endpoint}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error al consultar ${endpoint} (HTTP ${response.status})`);
   }
 
   return await response.json();

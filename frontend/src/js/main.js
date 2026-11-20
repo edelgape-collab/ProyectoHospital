@@ -1,16 +1,33 @@
 import '../css/main.css';
 import { appState } from './state.js';
-import { cargarCatalogosEnSelects, guardarPasoEnMemoria, inicializarEventosWizard } from './pages/wizard.js';
-import { inicializarEventosConsulta } from './pages/consultas.js';
+
+// 1. Importar las plantillas de vistas HTML
+import { renderConsultaView } from './views/consultaView.js';
+import { renderRegistroView } from './views/registroView.js';
+import { renderModalesView } from './views/modalesView.js';
+//import { inicializarEventosConsulta } from './pages/consultas.js';
+
+
+// 2. Importar la lógica funcional de cada módulo
+import { cargarCatalogosEnSelects, guardarPasoEnMemoria, inicializarEventosWizard } from './pages/wizard.js';import { inicializarEventosConsulta } from './pages/consultas.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
+  // PASO A: Inyectar primero todo el HTML en sus contenedores vacíos
+  const vistaConsulta = document.getElementById('vista-consulta');
+  const vistaRegistro = document.getElementById('vista-registro');
+  const contModales = document.getElementById('contenedor-modales');
+
+  if (vistaConsulta) vistaConsulta.innerHTML = renderConsultaView();
+  if (vistaRegistro) vistaRegistro.innerHTML = renderRegistroView();
+  if (contModales) contModales.innerHTML = renderModalesView();
+
+  // PASO B: Ahora que los elementos existen en el DOM, inicializar los módulos
   cargarCatalogosEnSelects();
   inicializarEventosConsulta();
 
   const btnRegistro = document.getElementById('btn-modo-registro');
   const btnConsulta = document.getElementById('btn-modo-consulta');
-  const vistaRegistro = document.getElementById('vista-registro');
-  const vistaConsulta = document.getElementById('vista-consulta');
 
   btnRegistro.addEventListener('click', () => {
     btnRegistro.classList.add('activo');

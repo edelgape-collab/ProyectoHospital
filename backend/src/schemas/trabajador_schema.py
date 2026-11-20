@@ -111,11 +111,6 @@ class VistaConsolidadoResponse(BaseModel):
     hora_fin: Optional[str] = None
     cantidad_horas: Optional[int] = None
 
-    #id_ubicacion: Optional[int] = None
-    #id_ubicacion_administrativa: Optional[int] = None
-    #id_ubicacion_fisica: Optional[int] = None
-    #id_asic: Optional[int] = None
-    #id_red: Optional[int] = None
 
     id_ubicacion: Optional[int] = None
     nombre_ubicacion_administrativa: Optional[str] = None

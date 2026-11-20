@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Estilos de Impresión y Generación de PDF
+   ========================================================================== */
+
+#contenedor-pdf-masivo {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 8mm;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    padding: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  /* Modo 1: Imprimir tabla actual */
+  body.imprimiendo-tabla #tabla-resultados,
+  body.imprimiendo-tabla #tabla-resultados * {
+    visibility: visible;
+  }
+
+  body.imprimiendo-tabla #tabla-resultados {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    font-size: 11px;
+  }
+
+  body.imprimiendo-tabla #tabla-resultados th {
+    background: #E2E8F0 !important;
+    color: #0F3B5F !important;
+  }
+
+  body.imprimiendo-tabla #tabla-resultados th:last-child,
+  body.imprimiendo-tabla #tabla-resultados td:last-child {
+    display: none;
+  }
+
+  /* Modo 2: Imprimir PDF consolidado de 6 tablas */
+  body.imprimiendo-masivo #contenedor-pdf-masivo,
+  body.imprimiendo-masivo #contenedor-pdf-masivo * {
+    visibility: visible;
+  }
+
+  body.imprimiendo-masivo #contenedor-pdf-masivo {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    font-size: 7.5px;
+  }
+
+  body.imprimiendo-masivo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+  }
+
+  body.imprimiendo-masivo th,
+  body.imprimiendo-masivo td {
+    border: 1px solid #94A3B8;
+    padding: 3px 4px;
+    text-align: left;
+    color: #0F172A;
+  }
+
+  body.imprimiendo-masivo th {
+    background: #E2E8F0 !important;
+    font-weight: bold;
+  }
+
+  /* Modo 3: Imprimir ficha individual del trabajador */
+  body:not(.imprimiendo-tabla):not(.imprimiendo-masivo) #ficha-informe-trabajador,
+  body:not(.imprimiendo-tabla):not(.imprimiendo-masivo) #ficha-informe-trabajador * {
+    visibility: visible;
+  }
+
+  body:not(.imprimiendo-tabla):not(.imprimiendo-masivo) #ficha-informe-trabajador {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

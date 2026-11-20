@@ -1,4 +1,5 @@
-import * as XLSX from 'xlsx';
+import * as XLSXNamespace from 'xlsx';
+const XLSX = XLSXNamespace.default || XLSXNamespace;
 
 export function exportarExcelConsolidado(registros, nombreArchivo = 'Reporte_Personal.xlsx') {
   if (!registros || !registros.length) {

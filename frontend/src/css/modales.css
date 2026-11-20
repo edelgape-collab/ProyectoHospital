@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Estilos del Módulo de Modales (<dialog>)
+   ========================================================================== */
+
+dialog.modal-peligro {
+  margin: auto;
+  border: 1px solid var(--borde-suave);
+  border-radius: 10px;
+  padding: 0;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 15px 35px rgba(15, 59, 95, 0.25);
+}
+
+dialog.modal-peligro::backdrop {
+  background: rgba(15, 59, 95, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-contenido {
+  padding: 22px;
+}
+
+.modal-contenido h3 {
+  color: var(--color-peligro);
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.modal-contenido p {
+  color: var(--texto-cuerpo);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.modal-peligro-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
