@@ -13,7 +13,7 @@ export function renderConsultaView() {
       <div class="flex-botones-busqueda">
         <button type="button" id="btn-buscar-cedula" class="btn-primario">Buscar</button>
         <button type="button" id="btn-toggle-filtros-avanzados" class="btn-azul-claro m-0">+ Filtros Avanzados</button>
-        <button type="button" id="btn-toggle-columnas" class="btn-azul-claro m-0">⚙ Columnas (6)</button>
+        <button type="button" id="btn-toggle-columnas" class="btn-azul-claro m-0">⚙ Columnas a mostrar (6)</button>
         <button type="button" id="btn-limpiar-consulta" class="btn-azul-claro m-0">Limpiar</button>
       </div>
     </div>
