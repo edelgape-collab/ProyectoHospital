@@ -1,8 +1,8 @@
 @echo off
 title Lanzador de Pruebas - Backend, Frontend y Cloudflare
 
-echo Iniciando Backend (Uvicorn con .venv)...
-start "1. BACKEND (Uvicorn)" cmd /k "cd /d "%~dp0backend" && call .venv\Scripts\activate && uvicorn main:app --reload --port 8000"
+echo Iniciando Backend (Uvicorn)...
+start "1. BACKEND (Uvicorn)" cmd /k "cd /d "%~dp0backend" && .venv\Scripts\uvicorn.exe src.main:app --reload --port 8000"
 
 timeout /t 2 /nobreak >nul
 
