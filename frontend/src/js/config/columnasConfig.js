@@ -110,9 +110,10 @@ export const CONFIG_VISTAS = {
     { key: 'cedula', label: 'Cédula Trabajador' },
     { key: 'periodos_vencidos', label: 'Periodos Vencidos' },
     { key: 'ultimo_disfrutado', label: 'Último Disfrutado' },
-    { key: 'fecha_asignada_inicio', label: 'Asig. Inicio' },
-    { key: 'fecha_asignada_fin', label: 'Asig. Fin' },
-    { key: 'fecha_inicio_disfrutada', label: 'Disf. Inicio' },
-    { key: 'fecha_fin_disfrutada', label: 'Disf. Fin' }
+    { key: 'fecha_solicitud', label: 'F. solicitud' },
+    { key: 'tipo_vacaciones', label: 'Tipo vacacion' },
+    { key: 'fecha_inicio_disfrute', label: 'Disf. Inicio' },
+    { key: 'fecha_fin_disfrute', label: 'Disf. Fin' },
+    { key: 'notas_vacaciones', label: 'Notas' }
   ]
 };

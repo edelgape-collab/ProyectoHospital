@@ -183,12 +183,15 @@ def obtener_trabajador_detalle(db: Session, id_trabajador: int) -> dict:
         ],
         "vacaciones": [
             {
+                
                 "periodos_vencidos": v.periodos_vencidos,
                 "ultimo_disfrutado": v.ultimo_disfrutado,
-                "fecha_asignada_inicio": str(v.fecha_asignada_inicio) if v.fecha_asignada_inicio else None,
-                "fecha_asignada_fin": str(v.fecha_asignada_fin) if v.fecha_asignada_fin else None,
-                "fecha_inicio_disfrutada": str(v.fecha_inicio_disfrutada) if v.fecha_inicio_disfrutada else None,
-                "fecha_fin_disfrutada": str(v.fecha_fin_disfrutada) if v.fecha_fin_disfrutada else None,
+                "fecha_solicitud": str(v.fecha_solicitud) if v.fecha_solicitud else None,
+                "tipo_vacaciones": str(v.tipo_vacaciones) if v.tipo_vacaciones else None,
+                "fecha_inicio_disfrute": str(v.fecha_inicio_disfrute) if v.fecha_inicio_disfrute else None,
+                "fecha_fin_disfrute": str(v.fecha_fin_disfrute) if v.fecha_fin_disfrute else None,
+                "notas_vacaciones": str(v.notas_vacaciones) if v.notas_vacaciones else None,
+                "id_vacaciones": str(v.id_vacaciones) if v.id_vacaciones else None,
             }
             for v in vacaciones
         ],
@@ -289,3 +292,6 @@ def eliminar_trabajador_completo(db: Session, id_trabajador: int) -> None:
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error al eliminar el trabajador: {str(e)}",
         )
+
+
+

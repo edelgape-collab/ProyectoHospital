@@ -64,11 +64,13 @@ export function exportarExcelConsolidado(registros, nombreArchivo = 'Reporte_Per
     'Trabajador': `${v.nombre_1 ?? ''} ${v.apellido_1 ?? ''}`.trim(),
     'Períodos Vencidos': v.periodos_vencidos ?? '',
     'Último Disfrutado': v.ultimo_disfrutado ?? '',
-    'Asignada Inicio': v.fecha_asignada_inicio ?? '',
-    'Asignada Fin': v.fecha_asignada_fin ?? '',
-    'Disfrutada Inicio': v.fecha_inicio_disfrutada ?? '',
-    'Disfrutada Fin': v.fecha_fin_disfrutada ?? ''
+    'Fecha Solicitud': v.fecha_solicitud ?? '',
+    'Tipo Vacaciones': v.tipo_vacaciones ?? '',
+    'Inicio Disfrute': v.fecha_inicio_disfrute ?? '',
+    'Fin Disfrute': v.fecha_fin_disfrute ?? '',
+    'Notas': v.notas_vacaciones ?? ''
   }));
+
 
   const libro = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(libro, XLSX.utils.json_to_sheet(hojaTrabajadores), 'Trabajadores');

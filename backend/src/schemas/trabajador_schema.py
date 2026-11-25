@@ -43,10 +43,12 @@ class HijoCreate(BaseModel):
 class VacacionCreate(BaseModel):
     periodos_vencidos: str = Field(..., max_length=255)
     ultimo_disfrutado: str = Field(..., max_length=9)
-    fecha_asignada_inicio: Optional[date] = None
-    fecha_asignada_fin: Optional[date] = None
-    fecha_inicio_disfrutada: Optional[date] = None
-    fecha_fin_disfrutada: Optional[date] = None
+    fecha_solicitud: Optional[date] = None
+    tipo_vacaciones: Optional[str] = Field(None, max_length=20)
+    fecha_inicio_disfrute: Optional[date] = None
+    fecha_fin_disfrute: Optional[date] = None
+    notas_vacaciones: Optional[str] = Field(None, max_length=255)
+    
 
 
 class TrabajadorCompletoCreate(BaseModel):
@@ -138,7 +140,8 @@ class VistaConsolidadoResponse(BaseModel):
     id_vacaciones: Optional[int] = None
     periodos_vencidos: Optional[str] = None
     ultimo_disfrutado: Optional[str] = None
-    fecha_asignada_inicio: Optional[date] = None
-    fecha_asignada_fin: Optional[date] = None
-    fecha_inicio_disfrutada: Optional[date] = None
-    fecha_fin_disfrutada: Optional[date] = None
+    fecha_solicitud: Optional[date] = None
+    tipo_vacaciones: Optional[str] = None
+    fecha_inicio_disfrute: Optional[date] = None
+    fecha_fin_disfrute: Optional[date] = None
+    notas_vacaciones: Optional[str] = None

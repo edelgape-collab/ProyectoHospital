@@ -122,21 +122,30 @@ export function renderRegistroView() {
       </div>
     </section>
 
-    <!-- PASO 6: VACACIONES -->
+        <!-- PASO 6: VACACIONES -->
     <section class="paso oculto" data-step="6">
       <h2>Paso 6: Vacaciones (Opcional / Múltiple)</h2>
       <div class="grid-campos">
-        <div class="campo"><label>Periodos Vencidos</label><input type="text" id="periodos_vencidos" placeholder="Ej: 2024-2025" /></div>
-        <div class="campo"><label>Último Disfrutado</label><input type="text" id="ultimo_disfrutado" placeholder="Ej: 2023-2024" /></div>
-        <div class="campo"><label>Fecha Asignada Inicio</label><input type="date" id="fecha_asignada_inicio" /></div>
-        <div class="campo"><label>Fecha Asignada Fin</label><input type="date" id="fecha_asignada_fin" /></div>
-        <div class="campo"><label>Fecha Inicio Disfrutada</label><input type="date" id="fecha_inicio_disfrutada" /></div>
-        <div class="campo"><label>Fecha Fin Disfrutada</label><input type="date" id="fecha_fin_disfrutada" /></div>
+        <div class="campo"><label>Periodos Vencidos</label><input type="text" id="periodos_vencidos" maxlength="255" placeholder="Ej: 2024-2025, 2025-2026" /></div>
+        <div class="campo"><label>Último Disfrutado</label><input type="text" id="ultimo_disfrutado" maxlength="9" placeholder="Ej: 2023-2024" /></div>
+        <div class="campo"><label>Fecha Solicitud</label><input type="date" id="fecha_solicitud" /></div>
+        <div class="campo">
+          <label>Tipo de Vacaciones</label>
+          <select id="tipo_vacaciones">
+            <option value="">Seleccione...</option>
+            <option value="Reglamentarias">Reglamentarias</option>
+            <option value="Adelantadas">Adelantadas</option>
+            <option value="Atrasadas">Atrasadas</option>
+          </select>
+        </div>
+        <div class="campo"><label>Fecha Inicio Disfrute</label><input type="date" id="fecha_inicio_disfrute" /></div>
+        <div class="campo"><label>Fecha Fin Disfrute</label><input type="date" id="fecha_fin_disfrute" /></div>
+        <div class="campo"><label>Notas de Vacaciones</label><input type="text" id="notas_vacaciones" maxlength="255" placeholder="Observaciones adicionales (opcional)" /></div>
       </div>
       <button type="button" id="btn-agregar-vacacion" class="btn-azul-claro">+ Agregar Periodo Vacacional</button>
       <div class="tabla-contenedor">
         <table>
-          <thead><tr><th>Vencidos</th><th>Último</th><th>Asignada (Ini/Fin)</th><th>Disfrutada (Ini/Fin)</th><th>Acción</th></tr></thead>
+          <thead><tr><th>Vencidos</th><th>Último</th><th>F. Solicitud</th><th>Tipo</th><th>Disfrute (Ini/Fin)</th><th>Notas</th><th>Acción</th></tr></thead>
           <tbody id="lista-vacaciones-preview"></tbody>
         </table>
       </div>

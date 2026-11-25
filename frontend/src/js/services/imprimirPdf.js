@@ -53,8 +53,8 @@ export function generarHtmlFichaTrabajador(datosCache, cedula, esMasivo = false)
         </tbody></table>` : '<p>Sin hijos registrados.</p>'}
       </div>
       <div class="informe-seccion"><h4>6. Vacaciones (${vacaciones.length})</h4>
-        ${vacaciones.length ? `<table><thead><tr><th>Vencidos</th><th>Último</th><th>Asignada</th><th>Disfrutada</th></tr></thead><tbody>
-          ${vacaciones.map(v => `<tr><td>${v.periodos_vencidos ?? '-'}</td><td>${v.ultimo_disfrutado ?? '-'}</td><td>${v.fecha_asignada_inicio ?? '-'} / ${v.fecha_asignada_fin ?? '-'}</td><td>${v.fecha_inicio_disfrutada ?? '-'} / ${v.fecha_fin_disfrutada ?? '-'}</td></tr>`).join('')}
+        ${vacaciones.length ? `<table><thead><tr><th>Vencidos</th><th>Último</th><th>F. Solicitud</th><th>Tipo</th><th>Disfrute (Ini / Fin)</th><th>Notas</th></tr></thead><tbody>
+          ${vacaciones.map(v => `<tr><td>${v.periodos_vencidos ?? '-'}</td><td>${v.ultimo_disfrutado ?? '-'}</td><td>${v.fecha_solicitud ?? '-'}</td><td>${v.tipo_vacaciones ?? '-'}</td><td>${v.fecha_inicio_disfrute ?? '-'} / ${v.fecha_fin_disfrute ?? '-'}</td><td>${v.notas_vacaciones ?? '-'}</td></tr>`).join('')}
         </tbody></table>` : '<p>Sin registros de vacaciones.</p>'}
       </div>
     </div>`;
@@ -115,11 +115,16 @@ export function imprimirReporteConsolidado(datosCache, usarColumnasPersonalizada
     }));
 
     const vacaciones = Array.from(new Map(datosCache.filter(r => r.id_vacaciones).map(r => [r.id_vacaciones, r])).values()).map(v => ({
-      'Cédula Trab.': v.cedula ?? '', 'Trabajador': `${v.nombre_1 ?? ''} ${v.apellido_1 ?? ''}`,
-      'Vencidos': v.periodos_vencidos ?? '-', 'Último': v.ultimo_disfrutado ?? '-',
-      'Asignada': `${v.fecha_asignada_inicio ?? '-'} a ${v.fecha_asignada_fin ?? '-'}`,
-      'Disfrutada': `${v.fecha_inicio_disfrutada ?? '-'} a ${v.fecha_fin_disfrutada ?? '-'}`
+      'Cédula Trab.': v.cedula ?? '',
+      'Trabajador': `${v.nombre_1 ?? ''} ${v.apellido_1 ?? ''}`,
+      'Vencidos': v.periodos_vencidos ?? '-',
+      'Último': v.ultimo_disfrutado ?? '-',
+      'F. Solicitud': v.fecha_solicitud ?? '-',
+      'Tipo': v.tipo_vacaciones ?? '-',
+      'Disfrute': `${v.fecha_inicio_disfrute ?? '-'} a ${v.fecha_fin_disfrute ?? '-'}`,
+      'Notas': v.notas_vacaciones ?? '-'
     }));
+
 
     contenedorPdf.innerHTML = `<h2>Reporte Consolidado de Personal - SARHHRRS</h2>`
       + construirTablaHtml('1. Datos Generales, Laborales, Ubicación y Salud', tablaTrabajadores)

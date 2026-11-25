@@ -41,11 +41,14 @@ export function renderizarTablasDinamicas() {
     <tr>
       <td>${v.periodos_vencidos}</td>
       <td>${v.ultimo_disfrutado}</td>
-      <td>${v.fecha_asignada_inicio || '-'} / ${v.fecha_asignada_fin || '-'}</td>
-      <td>${v.fecha_inicio_disfrutada || '-'} / ${v.fecha_fin_disfrutada || '-'}</td>
+      <td>${v.fecha_solicitud || '-'}</td>
+      <td>${v.tipo_vacaciones || '-'}</td>
+      <td>${v.fecha_inicio_disfrute || '-'} / ${v.fecha_fin_disfrute || '-'}</td>
+      <td>${v.notas_vacaciones || '-'}</td>
       <td><button type="button" class="btn-secundario" onclick="window.eliminarVacacion(${i})">Quitar</button></td>
     </tr>
   `).join('');
+
 }
 
 window.eliminarHijo = (i) => { eliminarItemLista('hijos', i); renderizarTablasDinamicas(); };
@@ -167,20 +170,38 @@ export function inicializarEventosWizard(cambiarPasoFn) {
   });
 
   document.getElementById('btn-agregar-vacacion').addEventListener('click', () => {
+    const periodosVencidos = valStr('periodos_vencidos');
+    const ultimoDisfrutado = valStr('ultimo_disfrutado');
+
+    if (!periodosVencidos || !ultimoDisfrutado) {
+      alert('Indica al menos los periodos vencidos y el último periodo disfrutado.');
+      return;
+    }
+
     agregarItemLista('vacaciones', {
-      periodos_vencidos: valStr('periodos_vencidos'),
-      ultimo_disfrutado: valStr('ultimo_disfrutado'),
-      fecha_asignada_inicio: valStr('fecha_asignada_inicio') || null,
-      fecha_asignada_fin: valStr('fecha_asignada_fin') || null,
-      fecha_inicio_disfrutada: valStr('fecha_inicio_disfrutada') || null,
-      fecha_fin_disfrutada: valStr('fecha_fin_disfrutada') || null
+      periodos_vencidos: periodosVencidos,
+      ultimo_disfrutado: ultimoDisfrutado,
+      fecha_solicitud: valStr('fecha_solicitud') || null,
+      tipo_vacaciones: valStr('tipo_vacaciones') || null,
+      fecha_inicio_disfrute: valStr('fecha_inicio_disfrute') || null,
+      fecha_fin_disfrute: valStr('fecha_fin_disfrute') || null,
+      notas_vacaciones: valStr('notas_vacaciones') || null
     });
 
-    ['periodos_vencidos', 'ultimo_disfrutado', 'fecha_asignada_inicio', 'fecha_asignada_fin', 'fecha_inicio_disfrutada', 'fecha_fin_disfrutada'].forEach(id => {
+    [
+      'periodos_vencidos',
+      'ultimo_disfrutado',
+      'fecha_solicitud',
+      'tipo_vacaciones',
+      'fecha_inicio_disfrute',
+      'fecha_fin_disfrute',
+      'notas_vacaciones'
+    ].forEach(id => {
       document.getElementById(id).value = '';
     });
     renderizarTablasDinamicas();
   });
+
 
   document.getElementById('btn-guardar-todo').addEventListener('click', async (e) => {
     guardarPasoEnMemoria(appState.pasoActual);

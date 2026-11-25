@@ -79,7 +79,8 @@ class VistaConsolidadoTrabajador(Base):
     # Vacaciones
     periodos_vencidos = Column(String(255))
     ultimo_disfrutado = Column(String(9))
-    fecha_asignada_inicio = Column(Date)
-    fecha_asignada_fin = Column(Date)
-    fecha_inicio_disfrutada = Column(Date)
-    fecha_fin_disfrutada = Column(Date)
+    fecha_solicitud = Column(Date)
+    tipo_vacaciones = Column(String(20))
+    fecha_inicio_disfrute = Column(Date)
+    fecha_fin_disfrute = Column(Date)
+    notas_vacaciones = Column(String(255))
