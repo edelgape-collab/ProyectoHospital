@@ -1,0 +1,11 @@
+VITE_API_URL=http://localhost:8000/api/v1
+#VITE_API_TUNNEL_URL=https://depending-upgrading-courtesy-locking.trycloudflare.com/api/v1
+
+#VITE_API_URL=http://127.0.0
+VITE_API_TUNNEL_URL=/api/v1
+#VITE_API_TUNNEL_URL=httpxxx.com/api/v1
+
+
+
+
+

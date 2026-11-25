@@ -4,10 +4,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     DB_HOST: str = "localhost"
     DB_PORT: int = 3306
-    DB_USER: str = "ProyectoH"
-    DB_PASSWORD: str = "abc12."
-    DB_NAME: str = "dbsarhhrrs"
-    FRONTEND_URL: str = "http://localhost:5173"
+    DB_USER: str = ""
+    DB_PASSWORD: str = ""
+    DB_NAME: str = ""
+    FRONTEND_URL: str = ""
 
     @property
     def database_url(self) -> str:
