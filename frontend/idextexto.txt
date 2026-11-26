@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SARHHRRS - Administración de Personal</title>
+
+  <link rel="stylesheet" href="./src/css/main.css" />
+  
+</head>
+<body>
+  <div class="contenedor-app">
+    <header class="nav-principal">
+      <!--<h1>SARHHRRS | Administración de Personal</h1> -->
+      <div class="tabs-modo">
+        <button type="button" id="btn-modo-consulta" class="activo">Consultas y Vistas</button>
+        <button type="button" id="btn-modo-registro">Nuevo Registro</button>
+      </div>
+    </header>
+ 
+
+    <section id="vista-consulta" class="activo"></section>
+    <section id="vista-registro" class="oculto"></section>
+  </div>
+
+  <div id="contenedor-modales"></div>
+  <div id="contenedor-pdf-masivo"></div>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

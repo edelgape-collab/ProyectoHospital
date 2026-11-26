@@ -2,32 +2,76 @@
    Estilos del Módulo de Consultas, Tablas, Autocompletado e Informe
    ========================================================================== */
 
-.flex-botones-busqueda {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+/* ==========================================================================
+   Estilos del Módulo de Consultas, Tablas, Autocompletado e Informe
+   ========================================================================== */
+.texto-ayuda-busqueda {
+  font-size: 0.74rem;
+  color: var(--texto-suave);
+  line-height: 1.3;
+  margin-bottom: 6px;
 }
 
+.barra-busqueda-superior {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.barra-busqueda-superior .campo-buscador {
+  flex: 1 1 260px;
+  min-width: 200px;
+}
+
+.flex-botones-busqueda {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-botones-busqueda button {
+  flex: 1 1 calc(50% - 6px);
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+}
+
+
+/* Botones de vistas (Consolidada, Básicos, Laborales, etc.) al 50% debajo de los 4 botones */
 .barra-vistas-consulta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px 0 14px 0;
-  padding-top: 14px;
+  gap: 4px;
+  margin: 8px 0 12px 0;
+  padding-top: 8px;
   border-top: 1px solid var(--borde-suave);
 }
 
+.barra-vistas-consulta .btn-filtro-vista {
+  padding: 3.5px 7px;
+  font-size: 0.72rem;
+  border-radius: 4px;
+}
+
+
 .barra-exportacion {
   display: flex;
-  margin-top: 14px;
+  margin-top: 10px;
   gap: 8px;
   justify-content: flex-end;
 }
 
 /* Tablas */
+/* Tablas con scroll interno (barra horizontal y botones siempre visibles) */
 .tabla-contenedor {
-  overflow-x: auto;
-  margin-top: 16px;
+  overflow: auto;
+  sticky: 0;
+  max-height: calc(100vh - 110px);
+  margin-top: 5px;
   border: 1px solid var(--borde-suave);
   border-radius: 8px;
 }
@@ -47,6 +91,9 @@ th, td {
 }
 
 th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   background: var(--color-marino);
   color: #FFFFFF;
   font-weight: 600;

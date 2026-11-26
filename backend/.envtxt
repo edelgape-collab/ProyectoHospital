@@ -1,0 +1,17 @@
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=ProyectoH
+DB_PASSWORD=abc12.
+DB_NAME=dbsarhhrrs
+FRONTEND_URL=http://localhost:5173
+
+
+
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=root
+DB_NAME=sistema_rrhh
+FRONTEND_URL=http://localhost:5173
+

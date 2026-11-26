@@ -6,7 +6,7 @@ import { renderConsultaView } from './views/consultaView.js';
 import { renderRegistroView } from './views/registroView.js';
 import { renderModalesView } from './views/modalesView.js';
 //import { inicializarEventosConsulta } from './pages/consultas.js';
-
+import { renderConsultaSidebarView } from './views/consultaSidebarView.js';
 
 // 2. Importar la lógica funcional de cada módulo
 import { cargarCatalogosEnSelects, guardarPasoEnMemoria, inicializarEventosWizard } from './pages/wizard.js';import { inicializarEventosConsulta } from './pages/consultas.js';
@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const vistaConsulta = document.getElementById('vista-consulta');
   const vistaRegistro = document.getElementById('vista-registro');
   const contModales = document.getElementById('contenedor-modales');
+  const sidebarConsulta = document.getElementById('sidebar-consulta-contenedor');
 
   if (vistaConsulta) vistaConsulta.innerHTML = renderConsultaView();
   if (vistaRegistro) vistaRegistro.innerHTML = renderRegistroView();
   if (contModales) contModales.innerHTML = renderModalesView();
+  if (sidebarConsulta) sidebarConsulta.innerHTML = renderConsultaSidebarView();
 
   // PASO B: Ahora que los elementos existen en el DOM, inicializar los módulos
   cargarCatalogosEnSelects();
@@ -29,11 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRegistro = document.getElementById('btn-modo-registro');
   const btnConsulta = document.getElementById('btn-modo-consulta');
 
+  const zonaChips = document.getElementById('zona-chips-rapidos');
+
   btnRegistro.addEventListener('click', () => {
     btnRegistro.classList.add('activo');
     btnConsulta.classList.remove('activo');
     vistaRegistro.classList.remove('oculto');
     vistaConsulta.classList.add('oculto');
+    zonaChips?.classList.add('oculto');
+    sidebarConsulta?.classList.add('oculto');
   });
 
   btnConsulta.addEventListener('click', () => {
@@ -41,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnRegistro.classList.remove('activo');
     vistaConsulta.classList.remove('oculto');
     vistaRegistro.classList.add('oculto');
+    sidebarConsulta?.classList.remove('oculto');
+    zonaChips?.classList.remove('oculto');
   });
 
   function cambiarPaso(numeroPaso) {

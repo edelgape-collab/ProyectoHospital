@@ -4,22 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SARHHRRS - Administración de Personal</title>
-
   <link rel="stylesheet" href="./src/css/main.css" />
-  
 </head>
 <body>
   <div class="contenedor-app">
-    <header class="nav-principal">
-      <h1>SARHHRRS | Administración de Personal</h1>
-      <div class="tabs-modo">
-        <button type="button" id="btn-modo-consulta" class="activo">Consultas y Vistas</button>
-        <button type="button" id="btn-modo-registro">Nuevo Registro</button>
+    <!-- ÁREA LATERAL IZQUIERDA (MENÚ + CONTENEDOR DINÁMICO DE BÚSQUEDA/CHIPS) -->
+    <aside class="sidebar-menu">
+      <div>
+        <h1>SARHHRRS</h1>
+        <nav class="tabs-modo sidebar-nav-botones">
+          <button type="button" id="btn-modo-consulta" class="activo">Consultas y Vistas</button>
+          <button type="button" id="btn-modo-registro">Nuevo Registro</button>
+        </nav>
       </div>
-    </header>
 
-    <section id="vista-consulta" class="activo"></section>
-    <section id="vista-registro" class="oculto"></section>
+      <!-- Contenedor donde JS inyectará el buscador, botones, vistas y chips -->
+      <div id="sidebar-consulta-contenedor" class="sidebar-consulta-wrapper"></div>
+    </aside>
+
+    <!-- ÁREA DERECHA DE TRABAJO DINÁMICA -->
+    <main class="area-trabajo">
+      <section id="vista-consulta" class="activo"></section>
+      <section id="vista-registro" class="oculto"></section>
+    </main>
   </div>
 
   <div id="contenedor-modales"></div>

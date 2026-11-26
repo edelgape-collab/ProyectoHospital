@@ -122,8 +122,9 @@ export function inicializarEventosConsulta() {
     .catch((err) => console.error('ERROR AL CARGAR DATOS:', err));
 
   // Delegación de clics (Exportación masiva y paneles desplegables)
-  vistaConsulta?.addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
+  //vistaConsulta?.addEventListener('click', (e) => {
+    document.querySelector('.contenedor-app')?.addEventListener('click', (e) => {
+     const btn = e.target.closest('button');
     if (!btn) return;
 
     if (btn.id === 'btn-exportar-excel-masivo') {
@@ -135,9 +136,14 @@ export function inicializarEventosConsulta() {
     } else if (btn.id === 'btn-imprimir-tabla-masiva') {
       imprimirReporteConsolidado(estadoConsulta.datosCache, estadoConsulta.usarColumnasPersonalizadas);
     } else if (btn.id === 'btn-toggle-filtros-avanzados') {
-      document.getElementById('panel-filtros-avanzados')?.classList.toggle('oculto');
+      const panel = document.getElementById('panel-filtros-avanzados');
+      panel?.classList.toggle('oculto');
+      btn.classList.toggle('activo', !panel?.classList.contains('oculto'));
     } else if (btn.id === 'btn-toggle-columnas') {
-      document.getElementById('panel-selector-columnas')?.classList.toggle('oculto');
+      const panel = document.getElementById('panel-selector-columnas');
+      panel?.classList.toggle('oculto');
+      btn.classList.toggle('activo', !panel?.classList.contains('oculto'));
+
     } else if (btn.id === 'btn-agregar-regla') {
       agregarFilaReglaDinamica(ejecutarFiltrosYRender);
     }
@@ -195,6 +201,11 @@ export function inicializarEventosConsulta() {
     estadoConsulta.cargosSeleccionados.clear();
     estadoConsulta.usarColumnasPersonalizadas = false;
     document.querySelectorAll('.chip-filtro').forEach(c => c.classList.remove('activo'));
+    document.getElementById('panel-filtros-avanzados')?.classList.add('oculto');
+    document.getElementById('panel-selector-columnas')?.classList.add('oculto');
+    document.getElementById('btn-toggle-filtros-avanzados')?.classList.remove('activo');
+    document.getElementById('btn-toggle-columnas')?.classList.remove('activo');
+
     const contReglas = document.getElementById('contenedor-reglas');
     if (contReglas) contReglas.innerHTML = '';
 
@@ -205,8 +216,10 @@ export function inicializarEventosConsulta() {
     estadoConsulta.sugerenciaActual = '';
     document.querySelectorAll('.btn-filtro-vista').forEach(b => b.classList.remove('activo'));
     document.getElementById('tabla-resultados-head').innerHTML = '';
-    document.getElementById('tabla-resultados-body').innerHTML =
-      '<tr><td>Presione <strong>Buscar</strong>, tecla <strong>Enter</strong> o seleccione una vista para cargar los registros.</td></tr>';
+    document.getElementById('tabla-resultados-body').innerHTML = '';
+    document.getElementById('#vista-consulta .tabla-contenedor')?.classList.add('oculto');
+    /*document.getElementById('tabla-resultados-body').innerHTML =
+      '<tr><td>Presione <strong>Buscar</strong>, tecla <strong>Enter</strong> o seleccione una vista para cargar los registros.</td></tr>';*/
   });
 
   document.querySelectorAll('.btn-filtro-vista').forEach(btn => {
@@ -295,4 +308,7 @@ window.imprimirPdfMasivo = () => {
     return;
   }
   imprimirReporteConsolidado(estadoConsulta.datosCache, estadoConsulta.usarColumnasPersonalizadas);
+  
 };
+
+

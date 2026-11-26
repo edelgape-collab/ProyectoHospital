@@ -129,6 +129,7 @@ export function rellenarFormularioDesdeEstado(idTrabajador = null) {
   document.getElementById('btn-modo-consulta').classList.remove('activo');
   document.getElementById('vista-registro').classList.remove('oculto');
   document.getElementById('vista-consulta').classList.add('oculto');
+  document.getElementById('sidebar-consulta-contenedor')?.classList.add('oculto');
 
   const btnGuardar = document.getElementById('btn-guardar-todo');
   btnGuardar.dataset.idEditando = idReal ? String(idReal) : '';

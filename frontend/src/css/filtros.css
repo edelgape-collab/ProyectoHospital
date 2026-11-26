@@ -28,14 +28,17 @@
 }
 
 .chip-filtro {
-  padding: 4px 12px;
+  padding: 2px 6px;
   border: 1px solid var(--borde-suave);
-  border-radius: 16px;
+  border-radius: 10px;
   background: var(--bg-principal);
   color: var(--color-marino);
   cursor: pointer;
-  font-size: 0.82rem;
+  font-size: 0.68rem;
   font-weight: 500;
+  line-height: 1.2;
+  white-space: normal;
+  text-align: left;
   transition: all 0.2s ease;
 }
 
